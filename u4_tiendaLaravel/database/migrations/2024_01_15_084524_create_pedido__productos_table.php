@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('pedido__productos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('cantidad');
+            $table->float('precioU');
+            //FK convencion de nombre Laravel
+            $table->foreign('pedido_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            //FK sin convencion de nombres Laravel
+            $table->integer('producto');
+            $table->foreign('producto')->references('id')->on('producto')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

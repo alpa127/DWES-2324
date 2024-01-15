@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->dateTime('fecha');
+            //Definir el cliente como FK
+            $table->foreignId('cliente_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
