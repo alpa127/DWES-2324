@@ -59,7 +59,17 @@ use Illuminate\Http\Request;
         }
         //Metodo que maneja la ruta borrarP
         function borrar($idP){
-            return 'Pagina para borrar el producto'.$idP;
+            $p = Producto::find($idP);
+
+            //si tienes pedidos no podemos borrar el producto
+            if(sizeof($p->detalle_pedidos())>0){
+                return back()->with('mensaje','Error, el producto se ha pedido');
+            }
+            else{
+                if($p->delete()){
+                    return back()->with('mensaje', 'Producto borrado');
+                }
+            }
         }
 
 
