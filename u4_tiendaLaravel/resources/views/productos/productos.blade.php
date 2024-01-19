@@ -2,12 +2,6 @@
 
 @section('titulo','PRODUCTOS')
     
-@section('mensaje')
-
-    <h3 class="text-danger">Espacio para mensaje</h3>
-
-@endsection
-
 @section('contenido')
    <a class="btn btn-outline-info" href="{{route('crearProducto')}}">Crear Producto.0</a>
     <table class="table table-striped">
@@ -17,8 +11,31 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Precio</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
+        <tbody>
+            @foreach ($productos as $p)
+            <tr>
+                <td>{{$p->id}}</td>
+                <td>{{$p->nombre}}</td>
+                <td>{{$p->descripcion}}</td>
+                <td>{{$p->precio}}</td>
+                <td>{{$p->stock}}</td>
+                <td><img src="{{asset('storage/'.$p->img)}}" width="50px" ></td>
+                <td>
+                    <a class="btn btn-outline-success" href="{{route('modificarP',$p->id)}}">Modificar</a>
+                    <form action="{{route('borrarP',$p->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger">Borrar</button>
+                    </form>
+                </td>
+                
+            </tr>
+            @endforeach
+        </tbody>
     </table>
 @endsection

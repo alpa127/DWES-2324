@@ -33,7 +33,7 @@ Route::controller(ProductoC::class)->group(function(){
 
     //Definir una ruta con un parametro
     //Ruta para ver un producto concreto, pasando el id
-    Route::get('productos/{idP}','borrar')->name('borrarP');
+    Route::delete('productos/{idP}','borrar')->name('borrarP');
 
     //Definir una ruta con un parametro
     //Ruta para ver un producto concreto, pasando el id

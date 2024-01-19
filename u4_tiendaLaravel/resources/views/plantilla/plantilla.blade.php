@@ -13,7 +13,10 @@
     </head>
     <body>
         <header>
+          <div style="display:flex;">
+            <img src="{{asset('img/tienda1.png')}}" alt="">
             <h1 class="display-6">@yield('titulo')</h1>
+          </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="#">Navbar scroll</a>
@@ -35,10 +38,14 @@
                   </div>
                 </div>
               </nav>
+           
         </header>
         <section>
             <div class="container">
-                @yield('mensaje')
+               <!-- Comprobar si hay mensaje en la variable de sesion -->
+            @if (session('mensaje'))
+            <h3 class="text-danger">{{session('mensaje')}}</h3>
+            @endif
             </div>
         </section>
         <section>
