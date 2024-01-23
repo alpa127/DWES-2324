@@ -9,7 +9,7 @@ class Producto extends Model
 {
     use HasFactory;
 
-    function detalle_pedido(){
+    function detalle_pedidos(){
         return $this->hasMany(Pedido_Producto::class,'producto','id')->get();
     }
 }

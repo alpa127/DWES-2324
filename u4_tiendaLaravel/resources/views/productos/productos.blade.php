@@ -3,7 +3,7 @@
 @section('titulo','PRODUCTOS')
     
 @section('contenido')
-   <a class="btn btn-outline-info" href="{{route('crearProducto')}}">Crear Producto.0</a>
+   <a class="btn btn-outline-info" href="{{route('crearProducto')}}">Crear Producto</a>
     <table class="table table-striped">
         <thead class="table-info">
             <tr>
@@ -11,8 +11,8 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
                 <th scope="col">Foto</th>
-                <th scope="col">Precio</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>

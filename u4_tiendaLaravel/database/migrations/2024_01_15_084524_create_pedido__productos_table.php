@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->float('precioU');
             //FK convencion de nombre Laravel
-            $table->foreign('pedido_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('pedido_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             //FK sin convencion de nombres Laravel
-            $table->integer('producto');
-            $table->foreign('producto')->references('id')->on('producto')->onDelete('restrict')->onUpdate('cascade');
+            $table->unsignedBigInteger('producto');
+            $table->foreign('producto')->references('id')->on('productos')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

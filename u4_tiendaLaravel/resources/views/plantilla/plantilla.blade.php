@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Productos</a>
                      </li>
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Clientes</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('clientes')}}">Clientes</a>
                         </li>
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Pedidos</a>

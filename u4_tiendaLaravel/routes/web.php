@@ -37,7 +37,8 @@ Route::controller(ProductoC::class)->group(function(){
 
     //Definir una ruta con un parametro
     //Ruta para ver un producto concreto, pasando el id
-    Route::get('productos/{idP}','modificar')->name('modificarP');
+    Route::get('productos/modificar/{idP}','modificar')->name('modificarP');
+    Route::put('productos/modificar/{idP}','actualizar')->name('actualizarP');
 
 });
 
