@@ -24,6 +24,34 @@ use Illuminate\Support\Facades\Storage;
         //para acceder a los campos del formulario hay que definir
         //un parámetro de la clase Request
         function insertar(Request $r){
+            //HACER LAS VALIDACIONES
+            //Todos los campos deben estar rellenos
+            //El nombre del producto no se puede repetir ya que es Unique
+            //Precio y stock no pueden ser negativos
+
+            //Validar: Admite un array con todas las validaciones
+            //Hay que indicar el name del campo del campo a validar
+            //y las validaciones sobre él.Si hay más de una se separan por
+            $r->validate([
+                "nombre"=>"required|unique:App/Models/Producto,nombre", //Dos validaciones: requerido y único en la tabla
+                "desc"=>"required",
+                "precio"=>"required|gte:0", //Requerido y >=0
+                "stock"=>"required|gte:0", //Requerido y >=0
+                "imagen"=>"required",
+            ]);
+
+            //Recuperar los datos del producto antes de modificar
+            //es el producto tal cual esta en la BD
+            $p = Producto::find($idP);
+
+            //Validar si se ha cambiado el nombre del producto que esta requerido
+            if($p->nombre != $r->nombre){
+                $r->validate(["nombre" => "unique:App\Models\Producto,nombre"]);
+            }
+
+
+
+
             //Crear un objeto del modelo Producto
             $p = new Producto();
             //Rellenar los datos del producto

@@ -18,6 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 })->name('inicio');
 
+Route::controller(LoginC::class)->group(function(){
+    Route::get('login','login')->name('login');//Carga form login
+    Route::get('login/registro','registro')->name('registro');//Carga form registro
+    Route::get('login/salir','salir')->name('salir');//Cierra sesión
+    Route::post('login','loguear')->name('loguear');//Inicia sesión si us y ps válidos
+    Route::post('login/registro','registrar')->name('registrar');//Crear usuario
+
+});
+
 
 Route::controller(ProductoC::class)->group(function(){
     //Definir una ruta básica para ver todos los productos
@@ -56,3 +65,4 @@ Route::get('productos/opt/{idP}/{untexto}',function($idP,$texto=null){
     echo '<h1>'.$texto=null?$texto:"".'</h1>';
     echo 'Pagina para ver como se define un párametro opcional '.$idP;
 });
+

@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Productos</a>
                      </li>
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('clientes')}}">Clientes</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Clientes</a>
                         </li>
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Pedidos</a>
@@ -45,6 +45,12 @@
                <!-- Comprobar si hay mensaje en la variable de sesion -->
             @if (session('mensaje'))
             <h3 class="text-danger">{{session('mensaje')}}</h3>
+            @endif
+            @if ($errors->any())
+              <ul>
+                @foreach ($errors->all() as $e)
+                <li class="text-danger">$e</li>
+              </ul>
             @endif
             </div>
         </section>
