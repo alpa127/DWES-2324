@@ -19,10 +19,11 @@
             @foreach ($clientes as $c)
             <tr>
                 <td>{{$c->id}}</td>
+                <td>{{$c->usuario->name}}</td>
                 <td>{{$c->email}}</td>
-                <td>{{$c->nombre}}</td>
                 <td>{{$c->telefono}}</td>
-                <td>{{$c->direccion}}</td>
+                <td>{{$c->usuario->direccion}}</td>
+                
                 <td>
                     <a class="btn btn-outline-success" href="{{route('modificarC',$c->id)}}">Modificar</a>
                     <form action="{{route('borrarC',$c->id)}}" method="POST">

@@ -6,12 +6,12 @@
   <form action="{{route('insertarProducto')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" id="email" placeholder="Email" >
-    </div>
-    <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email" id="email" placeholder="Email" >
     </div>
     <div class="mb-3">
         <label for="telefono" class="form-label">Telefono</label>

@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('clientes', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->foreignId('user_id')->constrained()
-            ->onDelete('retrict')->onUpdate('cascade')->unique();
+            $table->enum('tipo',['A','C']);
         });
     }
 
@@ -27,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('clientes', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

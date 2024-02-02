@@ -16,6 +16,8 @@
           <div style="display:flex;">
             <img src="{{asset('img/tienda1.png')}}" alt="">
             <h1 class="display-6">@yield('titulo')</h1>
+            <h3 class="" style="margin: 0 auto">{{Auth::user()->name}}</h3>
+            <a href="{{route('salir')}}" class="btn btn-outline-success" >Salir</a>
           </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -50,6 +52,7 @@
               <ul>
                 @foreach ($errors->all() as $e)
                 <li class="text-danger">$e</li>
+                @endforeach
               </ul>
             @endif
             </div>

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
     class ProductoC extends Controller
     {
+        function __construct()
+        {
+        $this->middleware('auth');
+        }
         //Metodo que maneja la ruta productos
         function productos(){
             //Recuperar los productos para mostrarlos en la 
@@ -23,7 +27,7 @@ use Illuminate\Support\Facades\Storage;
         //Este método se llama desde el submit del formulario
         //para acceder a los campos del formulario hay que definir
         //un parámetro de la clase Request
-        function insertar(Request $r){
+        function insertar(Request $r, $idP){
             //HACER LAS VALIDACIONES
             //Todos los campos deben estar rellenos
             //El nombre del producto no se puede repetir ya que es Unique
