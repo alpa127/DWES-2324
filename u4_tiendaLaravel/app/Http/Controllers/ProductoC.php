@@ -4,6 +4,7 @@
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
     class ProductoC extends Controller
@@ -17,7 +18,14 @@ use Illuminate\Support\Facades\Storage;
             //Recuperar los productos para mostrarlos en la 
             //tabñla de la vista
             $productos = Producto::all();
-            return view('productos/productos',compact('productos'));
+            if(Auth::user()->tipo=='A'){
+                //Vista admin
+                return view('productos/productos',compact('productos'));
+            }
+            else{
+                //Vista cliente
+            return view('productos/productosC',compact('productos'));
+            }
         }
         //Metodo que maneja la ruta crearProductos
         function crear(){
@@ -27,7 +35,7 @@ use Illuminate\Support\Facades\Storage;
         //Este método se llama desde el submit del formulario
         //para acceder a los campos del formulario hay que definir
         //un parámetro de la clase Request
-        function insertar(Request $r, $idP){
+        function insertar(Request $r){
             //HACER LAS VALIDACIONES
             //Todos los campos deben estar rellenos
             //El nombre del producto no se puede repetir ya que es Unique
@@ -37,21 +45,13 @@ use Illuminate\Support\Facades\Storage;
             //Hay que indicar el name del campo del campo a validar
             //y las validaciones sobre él.Si hay más de una se separan por
             $r->validate([
-                "nombre"=>"required|unique:App/Models/Producto,nombre", //Dos validaciones: requerido y único en la tabla
-                "desc"=>"required",
+                "nombre"=>"required|unique:App\Models\Producto,nombre", //Dos validaciones: requerido y único en la tabla
+                "descripcion"=>"required",
                 "precio"=>"required|gte:0", //Requerido y >=0
                 "stock"=>"required|gte:0", //Requerido y >=0
                 "imagen"=>"required",
             ]);
 
-            //Recuperar los datos del producto antes de modificar
-            //es el producto tal cual esta en la BD
-            $p = Producto::find($idP);
-
-            //Validar si se ha cambiado el nombre del producto que esta requerido
-            if($p->nombre != $r->nombre){
-                $r->validate(["nombre" => "unique:App\Models\Producto,nombre"]);
-            }
 
 
 

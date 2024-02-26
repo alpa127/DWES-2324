@@ -10,7 +10,7 @@ class Pedido_Producto extends Model
     use HasFactory;
     //Indicar el nombre de las tablas cuando
     //cuando no seguimos la convencion de nombres
-    protected $table = 'pedido_productos';
+    // protected $table = 'pedido_productos';
     
 
     function pedido(){

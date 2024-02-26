@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('clientes', function (Blueprint $table) {
             //
             $table->foreignId('user_id')->constrained()
-            ->onDelete('retrict')->onUpdate('cascade')->unique();
+            ->onDelete('restrict')->onUpdate('cascade')->unique();
         });
     }
 

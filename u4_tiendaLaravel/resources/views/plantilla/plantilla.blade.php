@@ -18,6 +18,12 @@
             <h1 class="display-6">@yield('titulo')</h1>
             <h3 class="" style="margin: 0 auto">{{Auth::user()->name}}</h3>
             <a href="{{route('salir')}}" class="btn btn-outline-success" >Salir</a>
+            {{-- Mostrar nº de productos en carrito --}}
+            @if (session('carrito')!=null)
+                <h3>
+                  <a href="{{route('verCarrito')}}">Carrito:{{sizeof(session('carrito'))}}</a>
+                </h3>
+            @endif
           </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -27,14 +33,19 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                      
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Productos</a>
                      </li>
+                      
+                      @if (Auth::user()->tipo=='A')
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Clientes</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('clientes')}}">Clientes</a>
                         </li>
+                      @endif
+
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{route('productos')}}">Pedidos</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('pedidos')}}">Pedidos</a>
                       </li>
                     </ul>
                   </div>

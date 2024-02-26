@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\CarritoC;
 use App\Http\Controllers\ProductoC;
 use App\Http\Controllers\ClientesC;
 use App\Http\Controllers\LoginC;
-
+use App\Http\Controllers\PedidosC;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::controller(LoginC::class)->group(function(){
     Route::post('login/registro','registrar')->name('registrar');//Crear usuario
 
 });
+
+
 
 
 Route::controller(ClientesC::class)->group(function(){
@@ -73,7 +76,6 @@ Route::controller(ProductoC::class)->group(function(){
     //Definir una ruta básica para ver todos los productos
     //Ruta para ver todos los productos
     Route::get('productos','productos')->name('productos');
-
     //Definir ruta apra crear un producto
     Route::get('productos/crear','crear')->name('crearProducto');
     Route::post('productos/insertar','insertar')->name('insertarProducto');
@@ -107,3 +109,17 @@ Route::get('productos/opt/{idP}/{untexto}',function($idP,$texto=null){
     echo 'Pagina para ver como se define un párametro opcional '.$idP;
 });
 
+Route::controller(PedidosC::class)->group(function(){
+    Route::get('pedidos','pedidos')->name('pedidos');//Ver pedidos Admin
+    Route::post('pedidos/crear','crearPedido')->name('crearPedido');
+});
+
+Route::controller(LoginC::class)->group(function(){
+    Route::post('carrito/{}','insertarCarrito')->name('carrito');//Carga form login
+});
+
+Route::controller(CarritoC::class)->group(function(){
+    Route::post('carrito','insertarCarrito')->name('carrito');
+    Route::get('carrito/verCarrito','verCarrito')->name('verCarrito');
+    Route::post('carrito/modificarCarrito','modificarCarrito')->name('modificarCarrito');
+});
