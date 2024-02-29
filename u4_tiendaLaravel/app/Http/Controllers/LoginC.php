@@ -29,7 +29,7 @@ class LoginC extends Controller
     function loguear(Request $r){
         //Abrir sesión si us y ps son correctos
         //Validaciones
-        $r -> validate(["email"=>"required|email:rfc,dns",
+        $r -> validate(["email"=>"required|email",
         "ps"=>"required"]);
         //Credenciales de acceso
         $credenciales=["email"=>$r->email,'password'=>$r->ps];

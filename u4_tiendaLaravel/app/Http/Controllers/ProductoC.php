@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Storage;
             //y las validaciones sobre él.Si hay más de una se separan por
             $r->validate([
                 "nombre"=>"required|unique:App\Models\Producto,nombre", //Dos validaciones: requerido y único en la tabla
-                "descripcion"=>"required",
+                "desc"=>"required",
                 "precio"=>"required|gte:0", //Requerido y >=0
                 "stock"=>"required|gte:0", //Requerido y >=0
                 "imagen"=>"required",

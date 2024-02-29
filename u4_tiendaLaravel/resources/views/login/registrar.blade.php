@@ -14,7 +14,7 @@
     <body>
         <section>
             <div style="display: flex; ">
-                <img src="{{asset('img/logo.png')}}" alt="logo">
+                <img src="{{asset('img/tienda1.png')}}" alt="logo">
                 <h1 class="display-6">Crear usuario</h1>
             </div>
         </section>
