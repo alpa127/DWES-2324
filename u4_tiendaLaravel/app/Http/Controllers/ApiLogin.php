@@ -89,7 +89,7 @@ class ApiLogin extends Controller
     public function login(Request $r){
          //Abrir sesión si us y ps son correctos
         //Validaciones
-        $r -> validate(["email"=>"required|email:rfc,dns",
+        $r -> validate(["email"=>"required",
         "ps"=>"required"]);
         //Credenciales de acceso
         $credenciales=["email"=>$r->email,'password'=>$r->ps];
